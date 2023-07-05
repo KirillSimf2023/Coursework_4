@@ -15,7 +15,6 @@ class Vacancy():
     all_class_vacancy = []  # список экземпляров класса, изначально пустой
 
     def __init__(self, in_vacancy: dict):
-
         self.id = in_vacancy['id']
         self.title = in_vacancy['title']
         self.link = in_vacancy['link']
@@ -43,37 +42,16 @@ class Vacancy():
             # salary_currency = item['salary']['currency']
             self.salary_currency = in_vacancy['salary_currency']
 
-
-
         Vacancy.all_class_vacancy.append(self)
 
     def __str__(self):
         return (f'ID: {self.id}, Title: {self.title}, URL: {self.link}, Salary_min: {self.salary_min}, Salary_max: {self.salary_max}, Currency: {self.salary_currency}')
 
     @classmethod
-    def __str__(cls):
-        for item in cls.all_class_vacancy:
-            print (f'ID: {item.id}, Title: {item.title}, URL: {item.link}, Salary_min: {item.salary_min}, Salary_max: {item.salary_max}, Currency: {item.salary_currency}')
-
-
-    # def __repr__(self):
-    #     pass
-
-    @classmethod
     def class_vacancy(cls, vacancy: list):
         """Метод для создания экземпляров класса"""
         for in_vacancy in vacancy:
             cls(in_vacancy)
-
-    # @property
-    # @classmethod
-    # def get_all_vacancys(cls) -> list:
-    #     return cls.all_class_vacancy
-
-
-    # def sorted_salary(self):
-    #     sorted_vac = sorted(self.all_class_vacancy, key=lambda i: (i['salary_min'], i['salary_max']), reverse=True)
-    #     self.all_class_vacancy = sorted_vac
 
     @property
     def salary_avg(self) -> int:
@@ -82,7 +60,6 @@ class Vacancy():
         """
          if (self.salary_min + self.salary_max) == 0:
             return 0
-
          avg_salary = int((self.salary_min + self.salary_max) / 2)
          return avg_salary
 
